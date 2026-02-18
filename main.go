@@ -7,6 +7,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"os"
 	"strconv"
 	"time"
 
@@ -240,7 +241,7 @@ func main() {
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	// Server
-	port := "8080"
+	port := os.Getenv("PORT")
 	log.Printf("🚀 Serveur démarré sur http://localhost:%s\n", port)
 	log.Fatal(http.ListenAndServe(":"+port, r))
 }
