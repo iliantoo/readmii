@@ -1,0 +1,94 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Guide complet du développement web",
+      "description": "Apprenez les bases du développement web moderne avec HTML, CSS et JavaScript",
+      "category": "article",
+      "tags": ["développement", "web", "javascript", "html", "css"],
+      "url": "#article-1",
+      "date": "2026-01-15"
+    },
+    {
+      "id": 2,
+      "title": "Formation React avancée",
+      "description": "Maîtrisez React avec hooks, context API et les meilleures pratiques",
+      "category": "article",
+      "tags": ["react", "javascript", "frontend", "hooks"],
+      "url": "#article-2",
+      "date": "2026-01-20"
+    },
+    {
+      "id": 3,
+      "title": "Hébergement Web Premium",
+      "description": "Service d'hébergement haute performance pour vos applications web",
+      "category": "produit",
+      "tags": ["hébergement", "serveur", "cloud", "scalingo"],
+      "url": "#produit-1",
+      "price": "29.99€/mois"
+    },
+    {
+      "id": 4,
+      "title": "Pack SEO Optimisation",
+      "description": "Optimisez votre référencement naturel et gagnez en visibilité",
+      "category": "service",
+      "tags": ["seo", "référencement", "marketing", "google"],
+      "url": "#service-1",
+      "price": "99.99€"
+    },
+    {
+      "id": 5,
+      "title": "Introduction à Node.js",
+      "description": "Créez des applications backend performantes avec Node.js et Express",
+      "category": "article",
+      "tags": ["nodejs", "backend", "javascript", "express"],
+      "url": "#article-3",
+      "date": "2026-02-01"
+    },
+    {
+      "id": 6,
+      "title": "API REST avec Express",
+      "description": "Développez des APIs RESTful robustes et sécurisées",
+      "category": "article",
+      "tags": ["api", "rest", "express", "nodejs", "backend"],
+      "url": "#article-4",
+      "date": "2026-02-05"
+    },
+    {
+      "id": 7,
+      "title": "Base de données MongoDB",
+      "description": "Gérez vos données avec MongoDB, la base NoSQL populaire",
+      "category": "article",
+      "tags": ["mongodb", "database", "nosql", "backend"],
+      "url": "#article-5",
+      "date": "2026-02-10"
+    },
+    {
+      "id": 8,
+      "title": "Consultation développement",
+      "description": "Une heure de consultation personnalisée pour votre projet",
+      "category": "service",
+      "tags": ["consultation", "développement", "conseil"],
+      "url": "#service-2",
+      "price": "150€/h"
+    },
+    {
+      "id": 9,
+      "title": "Pack démarrage startup",
+      "description": "Tout ce dont vous avez besoin pour lancer votre startup tech",
+      "category": "produit",
+      "tags": ["startup", "développement", "hébergement", "support"],
+      "url": "#produit-2",
+      "price": "499€"
+    },
+    {
+      "id": 10,
+      "title": "Déploiement sur Scalingo",
+      "description": "Guide pratique pour déployer vos applications sur Scalingo",
+      "category": "article",
+      "tags": ["scalingo", "déploiement", "cloud", "devops"],
+      "url": "#article-6",
+      "date": "2026-02-15"
+    }
+  ]
+}

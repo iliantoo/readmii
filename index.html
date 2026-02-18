@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche - YBoost</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Système de Recherche</h1>
+            <p class="subtitle">Recherchez parmi nos articles, produits et contenus</p>
+        </header>
+
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Tapez pour rechercher..."
+                autocomplete="off"
+            >
+            <div id="searchStats" class="search-stats"></div>
+        </div>
+
+        <div id="filters" class="filters">
+            <button class="filter-btn active" data-category="all">Tout</button>
+            <button class="filter-btn" data-category="article">Articles</button>
+            <button class="filter-btn" data-category="produit">Produits</button>
+            <button class="filter-btn" data-category="service">Services</button>
+        </div>
+
+        <div id="results" class="results">
+            <!-- Les résultats apparaîtront ici -->
+        </div>
+
+        <div id="noResults" class="no-results" style="display: none;">
+            <p>Aucun résultat trouvé pour votre recherche.</p>
+        </div>
+    </div>
+
+    <script src="search.js"></script>
+</body>
+</html>

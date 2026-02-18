@@ -1,0 +1,23 @@
+{
+  "name": "yboost-search",
+  "version": "1.0.0",
+  "description": "Système de recherche sans base de données pour Scalingo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "keywords": [
+    "search",
+    "scalingo",
+    "json"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
