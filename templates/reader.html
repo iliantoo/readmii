@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.PageTitle}}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="reader-body">
+    <nav class="navbar reader-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/manga/{{.Manga.ID}}" class="back-btn">← Retour au manga</a>
+                <div class="reader-info">
+                    <h1 class="reader-title">{{.Manga.Title}}</h1>
+                    <span class="reader-chapter">Chapitre {{.Chapter.Number}}: {{.Chapter.Title}}</span>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="reader-controls-top">
+        <div class="container">
+            <div class="controls-content">
+                {{if .PrevChapter}}
+                <a href="/read/{{.Manga.ID}}/{{.PrevChapter}}" class="nav-chapter prev">
+                    ← Chapitre précédent
+                </a>
+                {{else}}
+                <span class="nav-chapter disabled">Pas de chapitre précédent</span>
+                {{end}}
+
+                <div class="chapter-info">
+                    <span class="page-counter">
+                        <span id="currentPage">1</span> / {{len .Chapter.Pages}}
+                    </span>
+                </div>
+
+                {{if .NextChapter}}
+                <a href="/read/{{.Manga.ID}}/{{.NextChapter}}" class="nav-chapter next">
+                    Chapitre suivant →
+                </a>
+                {{else}}
+                <span class="nav-chapter disabled">Pas de chapitre suivant</span>
+                {{end}}
+            </div>
+        </div>
+    </div>
+
+    <main class="reader-container">
+        <div class="pages-container" id="pagesContainer">
+            {{range $index, $page := .Chapter.Pages}}
+            <div class="manga-page" data-page="{{add $index 1}}">
+                <img src="{{$page}}" alt="Page {{add $index 1}}" loading="lazy">
+            </div>
+            {{end}}
+        </div>
+    </main>
+
+    <div class="reader-controls-bottom">
+        <div class="container">
+            <div class="controls-content">
+                {{if .PrevChapter}}
+                <a href="/read/{{.Manga.ID}}/{{.PrevChapter}}" class="nav-chapter prev">
+                    ← Chapitre {{.PrevChapter}}
+                </a>
+                {{else}}
+                <span class="nav-chapter disabled"></span>
+                {{end}}
+
+                <a href="/manga/{{.Manga.ID}}" class="btn-return">
+                    Retour aux chapitres
+                </a>
+
+                {{if .NextChapter}}
+                <a href="/read/{{.Manga.ID}}/{{.NextChapter}}" class="nav-chapter next">
+                    Chapitre {{.NextChapter}} →
+                </a>
+                {{else}}
+                <span class="nav-chapter disabled"></span>
+                {{end}}
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/reader.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

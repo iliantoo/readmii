@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.PageTitle}}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-text">Readmii</span>
+                </a>
+                <div class="nav-actions">
+                    <a href="/" class="back-btn">← Retour</a>
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content detail-page">
+        <div class="container">
+            <div class="manga-detail">
+                <!-- Cover and Info Section -->
+                <div class="detail-header">
+                    <div class="detail-cover">
+                        <img src="{{.Manga.CoverURL}}" alt="{{.Manga.Title}}">
+                    </div>
+                    <div class="detail-info">
+                        <h1 class="detail-title">{{.Manga.Title}}</h1>
+                        <div class="detail-meta">
+                            <span class="meta-item">
+                                <strong>Auteur:</strong> {{.Manga.Author}}
+                            </span>
+                            <span class="meta-item">
+                                <strong>Année:</strong> {{.Manga.Year}}
+                            </span>
+                            <span class="meta-item">
+                                <strong>Statut:</strong> 
+                                <span class="status-badge {{if eq .Manga.Status "En cours"}}ongoing{{else}}completed{{end}}">
+                                    {{.Manga.Status}}
+                                </span>
+                            </span>
+                            <span class="meta-item rating-large">
+                                <strong>Note:</strong> ⭐ {{.Manga.Rating}}/5
+                            </span>
+                        </div>
+                        
+                        <div class="genres-container">
+                            {{range .Manga.Genres}}
+                            <span class="genre-badge">{{.}}</span>
+                            {{end}}
+                        </div>
+
+                        <div class="synopsis">
+                            <h3>Synopsis</h3>
+                            <p>{{.Manga.Description}}</p>
+                        </div>
+
+                        <div class="quick-actions">
+                            {{if gt (len .Manga.Chapters) 0}}
+                            <a href="/read/{{.Manga.ID}}/1" class="btn btn-primary">
+                                📖 Commencer la lecture
+                            </a>
+                            {{end}}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapters List -->
+                <div class="chapters-section">
+                    <h2 class="chapters-title">📚 Chapitres ({{len .Manga.Chapters}})</h2>
+                    <div class="chapters-list">
+                        {{range .Manga.Chapters}}
+                        <a href="/read/{{$.Manga.ID}}/{{.Number}}" class="chapter-item">
+                            <div class="chapter-number">Chapitre {{.Number}}</div>
+                            <div class="chapter-title">{{.Title}}</div>
+                            <div class="chapter-pages">{{len .Pages}} pages</div>
+                            <div class="chapter-arrow">→</div>
+                        </a>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Readmii. Fait avec ❤️ et Go</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
