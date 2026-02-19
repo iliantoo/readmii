@@ -1,0 +1,12 @@
+cmd/
+*.md
+README*.md
+DATABASE_SETUP.md
+BUILD.md
+ARCHITECTURE.md
+TRANSFORMATION_PLAN.md
+QUICK_START.md
+STRUCTURE_COMPARISON.md
+INDEX.md
+templates_backup/
+library_manga.backup
