@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.PageTitle}}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0e1a;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: #12172b;
+            padding: 2rem;
+            border-bottom: 2px solid #2d3748;
+        }
+        
+        .breadcrumb {
+            color: #a8b2d1;
+            margin-bottom: 1rem;
+        }
+        
+        .breadcrumb a {
+            color: #4a9eff;
+            text-decoration: none;
+        }
+        
+        .map-title {
+            font-size: 3rem;
+            letter-spacing: 3px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .lineup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .lineup-card {
+            background: #12172b;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .lineup-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .lineup-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .lineup-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a2137, #0a0e1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+        
+        .lineup-badges {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .badge-smoke { background: #b8b8b8; color: #000; }
+        .badge-flash { background: #ffffff; color: #000; }
+        .badge-molotov { background: #ff4444; }
+        .badge-he { background: #ffa500; }
+        
+        .badge-T { background: #ff6b35; }
+        .badge-CT { background: #4a9eff; }
+        
+        .lineup-info {
+            padding: 1.5rem;
+        }
+        
+        .lineup-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .lineup-meta {
+            color: #a8b2d1;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .lineup-stats {
+            display: flex;
+            gap: 1rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .no-lineups {
+            text-align: center;
+            padding: 3rem;
+            color: #a8b2d1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/">← Maps</a> / {{.Map.Name}}
+            </div>
+            <h1 class="map-title">{{.Map.DisplayName}}</h1>
+            <p>{{.Map.TotalLineups}} lineups disponibles</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        {{if .Map.Lineups}}
+        <div class="lineup-grid">
+            {{range .Map.Lineups}}
+            <div class="lineup-card">
+                <a href="#" class="lineup-link">
+                    <div class="lineup-thumbnail">
+                        <div class="lineup-badges">
+                            <span class="badge badge-{{.GrenadeType}}">
+                                {{if eq .GrenadeType "smoke"}}💨{{end}}
+                                {{if eq .GrenadeType "flash"}}⚡{{end}}
+                                {{if eq .GrenadeType "molotov"}}🔥{{end}}
+                                {{if eq .GrenadeType "he"}}💣{{end}}
+                            </span>
+                            <span class="badge badge-{{.Side}}">{{.Side}}</span>
+                        </div>
+                        🎯
+                    </div>
+                    <div class="lineup-info">
+                        <h3 class="lineup-title">{{.Title}}</h3>
+                        <div class="lineup-meta">
+                            {{.ThrowZone}} → {{.LandingZone}}
+                        </div>
+                        <div class="lineup-stats">
+                            <span>⭐ {{.Popularity}}</span>
+                            <span>👁️ {{.Views}}</span>
+                            <span>{{.Difficulty}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{end}}
+        </div>
+        {{else}}
+        <div class="no-lineups">
+            <h2>Pas encore de lineups pour cette carte</h2>
+            <p>Revenez bientôt !</p>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>

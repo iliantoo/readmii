@@ -1,0 +1,372 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-02-19",
+  "maps": [
+    {
+      "id": "mirage",
+      "name": "Mirage",
+      "display_name": "DE_MIRAGE",
+      "cover_image": "/assets/maps/mirage/cover.jpg",
+      "minimap": "/assets/maps/mirage/minimap.png",
+      "release_version": "cs2_v1.0",
+      "total_lineups": 4,
+      "zones": [
+        "A Site",
+        "B Site",
+        "Mid",
+        "Palace",
+        "Connector",
+        "Jungle",
+        "Stairs",
+        "Kitchen",
+        "Top Mid",
+        "Window",
+        "T Spawn",
+        "CT Spawn"
+      ],
+      "lineups": [
+        {
+          "id": "mir_smoke_001",
+          "title": "A Site CT Smoke depuis T Spawn",
+          "description": "Smoke qui bloque complètement la vue des CTs depuis CT Spawn vers A Site. Parfait pour une exécution A clean.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "T Spawn",
+          "landing_zone": "A Site (CT)",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind v \"+jumpthrow\"",
+            "movement": "none",
+            "click_type": "left_click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/positions/mir_smoke_001_pos.jpg",
+            "position_thumbnail": "/assets/lineups/positions/mir_smoke_001_pos_thumb.jpg",
+            "crosshair_image": "/assets/lineups/crosshairs/mir_smoke_001_cross.jpg",
+            "crosshair_zoom_level": "2x",
+            "demo_video": "/assets/lineups/demos/mir_smoke_001_demo.mp4",
+            "demo_gif": "/assets/lineups/demos/mir_smoke_001_demo.gif",
+            "demo_thumbnail": "/assets/lineups/demos/mir_smoke_001_thumb.jpg"
+          },
+          "tags": [
+            "one-way",
+            "execute",
+            "default",
+            "a-site"
+          ],
+          "popularity": 4.8,
+          "views": 12543,
+          "created_at": "2026-01-15",
+          "updated_at": "2026-02-10"
+        },
+        {
+          "id": "mir_flash_002",
+          "title": "A Palace Flash Pop",
+          "description": "Flash parfaite pour pop Palace et rush A Site. Flash les joueurs positionnés sur Default, Stairs et Jungle.",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Palace Entrance",
+          "landing_zone": "A Site",
+          "action_type": "right_click",
+          "action_details": {
+            "bind_required": false,
+            "movement": "walk_forward",
+            "click_type": "right_click",
+            "timing": "0.5s before peek"
+          },
+          "media": {
+            "position_image": "/assets/lineups/positions/mir_flash_002_pos.jpg",
+            "position_thumbnail": "/assets/lineups/positions/mir_flash_002_pos_thumb.jpg",
+            "crosshair_image": "/assets/lineups/crosshairs/mir_flash_002_cross.jpg",
+            "crosshair_zoom_level": "1.5x",
+            "demo_video": "/assets/lineups/demos/mir_flash_002_demo.mp4",
+            "demo_gif": "/assets/lineups/demos/mir_flash_002_demo.gif",
+            "demo_thumbnail": "/assets/lineups/demos/mir_flash_002_thumb.jpg"
+          },
+          "tags": [
+            "pop-flash",
+            "rush",
+            "entry",
+            "a-site",
+            "palace"
+          ],
+          "popularity": 4.5,
+          "views": 8932,
+          "created_at": "2026-01-20",
+          "updated_at": "2026-02-10"
+        },
+        {
+          "id": "mir_molotov_003",
+          "title": "B Short Molotov depuis Mid",
+          "description": "Molotov pour dégager les CTs positionnés sous B Short (bench). Utile pour les rotations rapides Mid vers B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "hard",
+          "throw_zone": "Top Mid",
+          "landing_zone": "B Short (Bench)",
+          "action_type": "w_jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+wjumpthrow\" \"+forward;+jump;-attack\"; alias \"-wjumpthrow\" \"-jump;-forward\"; bind c \"+wjumpthrow\"",
+            "movement": "walk_forward",
+            "click_type": "left_click",
+            "timing": "immediate"
+          },
+          "media": {
+            "position_image": "/assets/lineups/positions/mir_molotov_003_pos.jpg",
+            "position_thumbnail": "/assets/lineups/positions/mir_molotov_003_pos_thumb.jpg",
+            "crosshair_image": "/assets/lineups/crosshairs/mir_molotov_003_cross.jpg",
+            "crosshair_zoom_level": "3x",
+            "demo_video": "/assets/lineups/demos/mir_molotov_003_demo.mp4",
+            "demo_gif": "/assets/lineups/demos/mir_molotov_003_demo.gif",
+            "demo_thumbnail": "/assets/lineups/demos/mir_molotov_003_thumb.jpg"
+          },
+          "tags": [
+            "clear",
+            "post-plant",
+            "b-site",
+            "mid"
+          ],
+          "popularity": 4.2,
+          "views": 6721,
+          "created_at": "2026-01-25",
+          "updated_at": "2026-02-15"
+        },
+        {
+          "id": "mir_smoke_004",
+          "title": "Jungle Smoke (CT Side Retake)",
+          "description": "Smoke Jungle depuis CT Spawn pour isoler le site lors d'un retake A. Bloque la vision des Ts sur Stairs.",
+          "grenade_type": "smoke",
+          "side": "CT",
+          "difficulty": "easy",
+          "throw_zone": "CT Spawn",
+          "landing_zone": "Jungle",
+          "action_type": "standing_throw",
+          "action_details": {
+            "bind_required": false,
+            "movement": "none",
+            "click_type": "left_click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/positions/mir_smoke_004_pos.jpg",
+            "position_thumbnail": "/assets/lineups/positions/mir_smoke_004_pos_thumb.jpg",
+            "crosshair_image": "/assets/lineups/crosshairs/mir_smoke_004_cross.jpg",
+            "crosshair_zoom_level": "2x",
+            "demo_video": "/assets/lineups/demos/mir_smoke_004_demo.mp4",
+            "demo_gif": "/assets/lineups/demos/mir_smoke_004_demo.gif",
+            "demo_thumbnail": "/assets/lineups/demos/mir_smoke_004_thumb.jpg"
+          },
+          "tags": [
+            "retake",
+            "a-site",
+            "defense"
+          ],
+          "popularity": 4.6,
+          "views": 9872,
+          "created_at": "2026-02-01",
+          "updated_at": "2026-02-15"
+        }
+      ]
+    },
+    {
+      "id": "dust2",
+      "name": "Dust II",
+      "display_name": "DE_DUST2",
+      "cover_image": "/assets/maps/dust2/cover.jpg",
+      "minimap": "/assets/maps/dust2/minimap.png",
+      "release_version": "cs2_v1.0",
+      "total_lineups": 3,
+      "zones": [
+        "A Site",
+        "B Site",
+        "Long A",
+        "Catwalk",
+        "Mid",
+        "B Tunnels",
+        "CT Spawn",
+        "T Spawn",
+        "Short A",
+        "Long Doors"
+      ],
+      "lineups": [
+        {
+          "id": "d2_smoke_001",
+          "title": "Xbox Smoke depuis T Spawn",
+          "description": "Le smoke Xbox classique depuis T spawn. Bloque la vision mid des CTs et permet de traverser vers B tunnels.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "T Spawn",
+          "landing_zone": "Xbox (Mid)",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind v \"+jumpthrow\"",
+            "movement": "none",
+            "click_type": "left_click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/positions/d2_smoke_001_pos.jpg",
+            "position_thumbnail": "/assets/lineups/positions/d2_smoke_001_pos_thumb.jpg",
+            "crosshair_image": "/assets/lineups/crosshairs/d2_smoke_001_cross.jpg",
+            "crosshair_zoom_level": "2x",
+            "demo_video": "/assets/lineups/demos/d2_smoke_001_demo.mp4",
+            "demo_gif": "/assets/lineups/demos/d2_smoke_001_demo.gif",
+            "demo_thumbnail": "/assets/lineups/demos/d2_smoke_001_thumb.jpg"
+          },
+          "tags": [
+            "classic",
+            "essential",
+            "mid",
+            "xbox"
+          ],
+          "popularity": 4.9,
+          "views": 24532,
+          "created_at": "2026-01-10",
+          "updated_at": "2026-02-12"
+        },
+        {
+          "id": "d2_flash_002",
+          "title": "Long A Flash depuis Long Doors",
+          "description": "Flash pour aveugler les CTs positionnés au fond de Long A (site, pit, corner).",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Long Doors",
+          "landing_zone": "Long A",
+          "action_type": "right_click",
+          "action_details": {
+            "bind_required": false,
+            "movement": "none",
+            "click_type": "right_click",
+            "timing": "1s before peek"
+          },
+          "media": {
+            "position_image": "/assets/lineups/positions/d2_flash_002_pos.jpg",
+            "position_thumbnail": "/assets/lineups/positions/d2_flash_002_pos_thumb.jpg",
+            "crosshair_image": "/assets/lineups/crosshairs/d2_flash_002_cross.jpg",
+            "crosshair_zoom_level": "1.5x",
+            "demo_video": "/assets/lineups/demos/d2_flash_002_demo.mp4",
+            "demo_gif": "/assets/lineups/demos/d2_flash_002_demo.gif",
+            "demo_thumbnail": "/assets/lineups/demos/d2_flash_002_thumb.jpg"
+          },
+          "tags": [
+            "long",
+            "a-site",
+            "push"
+          ],
+          "popularity": 4.4,
+          "views": 11234,
+          "created_at": "2026-01-18",
+          "updated_at": "2026-02-14"
+        },
+        {
+          "id": "d2_he_003",
+          "title": "B Doors HE Grenade",
+          "description": "HE grenade pour faire des dégâts à travers les portes B tunnels. Efficace contre les CTs qui stack B.",
+          "grenade_type": "he",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "B Tunnels (Outside Doors)",
+          "landing_zone": "B Doors",
+          "action_type": "standing_throw",
+          "action_details": {
+            "bind_required": false,
+            "movement": "none",
+            "click_type": "left_click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/positions/d2_he_003_pos.jpg",
+            "position_thumbnail": "/assets/lineups/positions/d2_he_003_pos_thumb.jpg",
+            "crosshair_image": "/assets/lineups/crosshairs/d2_he_003_cross.jpg",
+            "crosshair_zoom_level": "1x",
+            "demo_video": "/assets/lineups/demos/d2_he_003_demo.mp4",
+            "demo_gif": "/assets/lineups/demos/d2_he_003_demo.gif",
+            "demo_thumbnail": "/assets/lineups/demos/d2_he_003_thumb.jpg"
+          },
+          "tags": [
+            "damage",
+            "b-site",
+            "tunnels"
+          ],
+          "popularity": 3.9,
+          "views": 5621,
+          "created_at": "2026-02-05",
+          "updated_at": "2026-02-16"
+        }
+      ]
+    },
+    {
+      "id": "inferno",
+      "name": "Inferno",
+      "display_name": "DE_INFERNO",
+      "cover_image": "/assets/maps/inferno/cover.jpg",
+      "minimap": "/assets/maps/inferno/minimap.png",
+      "release_version": "cs2_v1.0",
+      "total_lineups": 0,
+      "zones": [
+        "A Site",
+        "B Site",
+        "Banana",
+        "Apartments",
+        "Mid",
+        "Boiler",
+        "Arch",
+        "Pit",
+        "Library",
+        "CT Spawn"
+      ],
+      "lineups": []
+    },
+    {
+      "id": "anubis",
+      "name": "Anubis",
+      "display_name": "DE_ANUBIS",
+      "cover_image": "/assets/maps/anubis/cover.jpg",
+      "minimap": "/assets/maps/anubis/minimap.png",
+      "release_version": "cs2_v1.2",
+      "total_lineups": 0,
+      "zones": [
+        "A Site",
+        "B Site",
+        "Mid",
+        "Canal",
+        "Temple",
+        "Bridge",
+        "Palace",
+        "Ruins"
+      ],
+      "lineups": []
+    }
+  ],
+  "metadata": {
+    "grenade_types": [
+      "smoke",
+      "flash",
+      "molotov",
+      "he"
+    ],
+    "sides": [
+      "T",
+      "CT",
+      "both"
+    ],
+    "difficulties": [
+      "easy",
+      "medium",
+      "hard",
+      "pro"
+    ],
+    "action_types": [
+      "left_click",
+      "right_click",
+      "jumpthrow",
+      "w_jumpthrow",
+      "running_throw",
+      "standing_throw"
+    ]
+  }
+}

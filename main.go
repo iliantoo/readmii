@@ -1,42 +1,17 @@
 package main
 
 import (
+	"database/sql"
 	"encoding/json"
 	"html/template"
 	"io/ioutil"
 	"log"
-	"math/rand"
 	"net/http"
 	"os"
-	"strconv"
-	"time"
 
 	"github.com/gorilla/mux"
+	_ "github.com/lib/pq"
 )
-
-// Models
-type Chapter struct {
-	Number int      `json:"number"`
-	Title  string   `json:"title"`
-	Pages  []string `json:"pages"`
-}
-
-type Manga struct {
-	ID          string    `json:"id"`
-	Title       string    `json:"title"`
-	Author      string    `json:"author"`
-	CoverURL    string    `json:"cover_url"`
-	Description string    `json:"description"`
-	Genres      []string  `json:"genres"`
-	Status      string    `json:"status"`
-	Year        int       `json:"year"`
-	Rating      float64   `json:"rating"`
-	Chapters    []Chapter `json:"chapters"`
-}
-
-type Library struct {
-	Mangas []Manga `json:"mangas"`
-}
 
 // Global library
 var library Library
@@ -44,14 +19,138 @@ var library Library
 // Template cache
 var templates *template.Template
 
-// Initialize
-func init() {
-	rand.Seed(time.Now().UnixNano())
+// Database connection
+var db *sql.DB
+var useDatabase bool
+
+// Init database connection
+func initDatabase() error {
+	databaseURL := os.Getenv("DATABASE_URL")
+	if databaseURL == "" {
+		log.Println("⚠️  DATABASE_URL non définie, utilisation du fichier JSON")
+		useDatabase = false
+		return nil
+	}
+
+	var err error
+	db, err = sql.Open("postgres", databaseURL)
+	if err != nil {
+		return err
+	}
+
+	if err = db.Ping(); err != nil {
+		log.Printf("⚠️  Erreur connexion DB: %v. Utilisation du fichier JSON\n", err)
+		useDatabase = false
+		return nil
+	}
+
+	useDatabase = true
+	log.Println("✅ Connexion PostgreSQL réussie")
+	return nil
+}
+
+// Load maps from database
+func loadMapsFromDB() ([]Map, error) {
+	rows, err := db.Query(`
+		SELECT id, name, display_name, cover_image, total_lineups
+		FROM maps
+		ORDER BY name
+	`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var maps []Map
+	for rows.Next() {
+		var m Map
+		err := rows.Scan(&m.ID, &m.Name, &m.DisplayName, &m.CoverImage, &m.TotalLineups)
+		if err != nil {
+			return nil, err
+		}
+		maps = append(maps, m)
+	}
+
+	return maps, nil
+}
+
+// Get map with lineups from database
+func getMapFromDB(mapID string) (*Map, error) {
+	var m Map
+	err := db.QueryRow(`
+		SELECT id, name, display_name, cover_image, total_lineups
+		FROM maps WHERE id = $1
+	`, mapID).Scan(&m.ID, &m.Name, &m.DisplayName, &m.CoverImage, &m.TotalLineups)
+
+	if err != nil {
+		return nil, err
+	}
+
+	// Charger les lineups
+	rows, err := db.Query(`
+		SELECT id, title, description, grenade_type, side, difficulty,
+			throw_zone, landing_zone, action_type,
+			bind_required, bind_command, movement, click_type,
+			position_image, position_thumbnail, crosshair_image, crosshair_zoom_level,
+			demo_gif, demo_thumbnail,
+			popularity, views
+		FROM lineups
+		WHERE map_id = $1
+		ORDER BY popularity DESC, views DESC
+	`, mapID)
+
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var lineups []Lineup
+	for rows.Next() {
+		var l Lineup
+		err := rows.Scan(
+			&l.ID, &l.Title, &l.Description, &l.GrenadeType, &l.Side, &l.Difficulty,
+			&l.ThrowZone, &l.LandingZone, &l.ActionType,
+			&l.ActionDetails.BindRequired, &l.ActionDetails.BindCommand,
+			&l.ActionDetails.Movement, &l.ActionDetails.ClickType,
+			&l.Media.PositionImage, &l.Media.PositionThumbnail,
+			&l.Media.CrosshairImage, &l.Media.CrosshairZoomLevel,
+			&l.Media.DemoGif, &l.Media.DemoThumbnail,
+			&l.Popularity, &l.Views,
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		// Charger les tags
+		tagRows, err := db.Query(`
+			SELECT t.name
+			FROM tags t
+			JOIN lineup_tags lt ON t.id = lt.tag_id
+			WHERE lt.lineup_id = $1
+		`, l.ID)
+
+		if err == nil {
+			var tags []string
+			for tagRows.Next() {
+				var tag string
+				if err := tagRows.Scan(&tag); err == nil {
+					tags = append(tags, tag)
+				}
+			}
+			tagRows.Close()
+			l.Tags = tags
+		}
+
+		lineups = append(lineups, l)
+	}
+
+	m.Lineups = lineups
+	return &m, nil
 }
 
 // Load library from JSON file
 func loadLibrary() error {
-	data, err := ioutil.ReadFile("library.json")
+	data, err := ioutil.ReadFile("lineups.json")
 	if err != nil {
 		return err
 	}
@@ -61,7 +160,7 @@ func loadLibrary() error {
 		return err
 	}
 
-	log.Printf("✅ Bibliothèque chargée : %d mangas", len(library.Mangas))
+	log.Printf("✅ Bibliothèque chargée : %d cartes", len(library.Maps))
 	return nil
 }
 
@@ -73,56 +172,51 @@ func loadTemplates() {
 		},
 	}
 
-	var err error
 	templates = template.Must(template.New("").Funcs(funcMap).ParseGlob("templates/*.html"))
-	if err != nil {
-		log.Fatal("Erreur de chargement des templates:", err)
-	}
 	log.Println("✅ Templates chargés")
 }
 
 // Helper functions
-func getMangaByID(id string) *Manga {
-	for i := range library.Mangas {
-		if library.Mangas[i].ID == id {
-			return &library.Mangas[i]
+func getMapByID(id string) *Map {
+	if useDatabase {
+		m, err := getMapFromDB(id)
+		if err != nil {
+			log.Printf("Erreur récupération map depuis DB: %v\n", err)
+			return nil
+		}
+		return m
+	}
+
+	// Fallback sur JSON
+	for i := range library.Maps {
+		if library.Maps[i].ID == id {
+			return &library.Maps[i]
 		}
 	}
 	return nil
 }
 
-func getTopMangas(limit int) []Manga {
-	if limit > len(library.Mangas) {
-		limit = len(library.Mangas)
-	}
-	return library.Mangas[:limit]
-}
-
-func getRandomMangas(count int) []Manga {
-	if count > len(library.Mangas) {
-		count = len(library.Mangas)
+func getAllMaps() []Map {
+	if useDatabase {
+		maps, err := loadMapsFromDB()
+		if err != nil {
+			log.Printf("Erreur récupération maps depuis DB: %v\n", err)
+			return library.Maps
+		}
+		return maps
 	}
 
-	indices := rand.Perm(len(library.Mangas))
-	result := make([]Manga, count)
-	for i := 0; i < count; i++ {
-		result[i] = library.Mangas[indices[i]]
-	}
-	return result
+	return library.Maps
 }
 
 // Handlers
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	data := struct {
-		TopMangas   []Manga
-		Recommended []Manga
-		AllMangas   []Manga
-		PageTitle   string
+		Maps      []Map
+		PageTitle string
 	}{
-		TopMangas:   getTopMangas(5),
-		Recommended: getRandomMangas(4),
-		AllMangas:   library.Mangas,
-		PageTitle:   "Readmii - Accueil",
+		Maps:      getAllMaps(),
+		PageTitle: "CS2 Lineups - Home",
 	}
 
 	err := templates.ExecuteTemplate(w, "home.html", data)
@@ -132,98 +226,43 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func mangaDetailHandler(w http.ResponseWriter, r *http.Request) {
+func mapViewHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	mangaID := vars["id"]
+	mapID := vars["id"]
 
-	manga := getMangaByID(mangaID)
-	if manga == nil {
+	mapData := getMapByID(mapID)
+	if mapData == nil {
 		http.NotFound(w, r)
 		return
 	}
 
 	data := struct {
-		Manga     *Manga
+		Map       *Map
 		PageTitle string
 	}{
-		Manga:     manga,
-		PageTitle: manga.Title + " - Détails",
+		Map:       mapData,
+		PageTitle: mapData.Name + " - Lineups",
 	}
 
-	err := templates.ExecuteTemplate(w, "detail.html", data)
+	err := templates.ExecuteTemplate(w, "map-view.html", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
-		log.Println("Erreur template detail:", err)
-	}
-}
-
-func readerHandler(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	mangaID := vars["id"]
-	chapterNum, err := strconv.Atoi(vars["chapter"])
-	if err != nil {
-		http.Error(w, "Numéro de chapitre invalide", http.StatusBadRequest)
-		return
-	}
-
-	manga := getMangaByID(mangaID)
-	if manga == nil {
-		http.NotFound(w, r)
-		return
-	}
-
-	var chapter *Chapter
-	for i := range manga.Chapters {
-		if manga.Chapters[i].Number == chapterNum {
-			chapter = &manga.Chapters[i]
-			break
-		}
-	}
-
-	if chapter == nil {
-		http.NotFound(w, r)
-		return
-	}
-
-	// Find previous and next chapters
-	var prevChapter, nextChapter *int
-	for i := range manga.Chapters {
-		if manga.Chapters[i].Number == chapterNum-1 {
-			num := manga.Chapters[i].Number
-			prevChapter = &num
-		}
-		if manga.Chapters[i].Number == chapterNum+1 {
-			num := manga.Chapters[i].Number
-			nextChapter = &num
-		}
-	}
-
-	data := struct {
-		Manga       *Manga
-		Chapter     *Chapter
-		PrevChapter *int
-		NextChapter *int
-		PageTitle   string
-	}{
-		Manga:       manga,
-		Chapter:     chapter,
-		PrevChapter: prevChapter,
-		NextChapter: nextChapter,
-		PageTitle:   manga.Title + " - Chapitre " + strconv.Itoa(chapterNum),
-	}
-
-	err = templates.ExecuteTemplate(w, "reader.html", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		log.Println("Erreur template reader:", err)
+		log.Println("Erreur template map-view:", err)
 	}
 }
 
 // Main
 func main() {
-	// Load data
-	if err := loadLibrary(); err != nil {
-		log.Fatal("❌ Erreur de chargement de library.json:", err)
+	// Init database connection
+	if err := initDatabase(); err != nil {
+		log.Printf("⚠️  Erreur initialisation DB: %v\n", err)
+	}
+
+	// Load data from JSON as fallback
+	if !useDatabase {
+		if err := loadLibrary(); err != nil {
+			log.Fatal("❌ Erreur de chargement de lineups.json:", err)
+		}
 	}
 
 	// Load templates
@@ -234,14 +273,23 @@ func main() {
 
 	// Routes
 	r.HandleFunc("/", homeHandler).Methods("GET")
-	r.HandleFunc("/manga/{id}", mangaDetailHandler).Methods("GET")
-	r.HandleFunc("/read/{id}/{chapter:[0-9]+}", readerHandler).Methods("GET")
+	r.HandleFunc("/map/{id}", mapViewHandler).Methods("GET")
 
 	// Static files
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	r.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("public/assets"))))
 
 	// Server
 	port := os.Getenv("PORT")
-	log.Printf("🚀 Serveur démarré sur http://localhost:%s\n", port)
+	if port == "" {
+		port = "8080"
+	}
+
+	if useDatabase {
+		log.Printf("🚀 Serveur CS2 Lineups démarré sur http://localhost:%s (PostgreSQL)\n", port)
+	} else {
+		log.Printf("🚀 Serveur CS2 Lineups démarré sur http://localhost:%s (JSON)\n", port)
+	}
+
 	log.Fatal(http.ListenAndServe(":"+port, r))
 }

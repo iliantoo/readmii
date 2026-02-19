@@ -1,138 +1,109 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.PageTitle}}</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0e1a;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff6b35, #4a9eff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #a8b2d1;
+        }
+        
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .map-card {
+            background: #12172b;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .map-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.3);
+        }
+        
+        .map-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a2137, #0a0e1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .map-info {
+            padding: 1.5rem;
+        }
+        
+        .map-name {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .map-count {
+            color: #44dd88;
+            font-size: 1.1rem;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <a href="/" class="logo">
-                    <span class="logo-icon">📚</span>
-                    <span class="logo-text">Readmii</span>
-                </a>
-                <div class="nav-actions">
-                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-                        <span class="sun-icon">☀️</span>
-                        <span class="moon-icon">🌙</span>
-                    </button>
-                </div>
-            </div>
+    <div class="container">
+        <div class="hero">
+            <h1>COUNTER-STRIKE 2 LINEUPS</h1>
+            <p>Maîtrisez vos utilitaires avec des lineups précis</p>
         </div>
-    </nav>
-
-    <main class="main-content">
-        <div class="container">
-            <!-- Hero Section -->
-            <section class="hero">
-                <h1 class="hero-title">Bienvenue sur Readmii</h1>
-                <p class="hero-subtitle">Découvrez et lisez vos mangas préférés gratuitement</p>
-            </section>
-
-            <!-- Top Mangas Section -->
-            <section class="section">
-                <div class="section-header">
-                    <h2 class="section-title">🔥 Top Mangas</h2>
-                    <p class="section-subtitle">Les meilleurs mangas du moment</p>
+        
+        <div class="map-grid">
+            {{range .Maps}}
+            <a href="/map/{{.ID}}" class="map-card">
+                <div class="map-image">🗺️</div>
+                <div class="map-info">
+                    <div class="map-name">{{.DisplayName}}</div>
+                    <div class="map-count">{{.TotalLineups}} lineups</div>
                 </div>
-                <div class="manga-grid top-grid">
-                    {{range .TopMangas}}
-                    <div class="manga-card featured">
-                        <a href="/manga/{{.ID}}" class="manga-link">
-                            <div class="manga-cover">
-                                <img src="{{.CoverURL}}" alt="{{.Title}}" loading="lazy">
-                                <div class="manga-overlay">
-                                    <div class="rating">⭐ {{.Rating}}</div>
-                                    <div class="status-badge {{if eq .Status "En cours"}}ongoing{{else}}completed{{end}}">
-                                        {{.Status}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="manga-info">
-                                <h3 class="manga-title">{{.Title}}</h3>
-                                <p class="manga-author">{{.Author}}</p>
-                                <div class="manga-meta">
-                                    <span class="year">{{.Year}}</span>
-                                    <span class="chapters">{{len .Chapters}} chapitres</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    {{end}}
-                </div>
-            </section>
-
-            <!-- Recommendations Section -->
-            <section class="section">
-                <div class="section-header">
-                    <h2 class="section-title">✨ Recommandations</h2>
-                    <p class="section-subtitle">Découvrez ces mangas sélectionnés pour vous</p>
-                </div>
-                <div class="manga-grid">
-                    {{range .Recommended}}
-                    <div class="manga-card">
-                        <a href="/manga/{{.ID}}" class="manga-link">
-                            <div class="manga-cover">
-                                <img src="{{.CoverURL}}" alt="{{.Title}}" loading="lazy">
-                                <div class="manga-overlay">
-                                    <div class="rating">⭐ {{.Rating}}</div>
-                                </div>
-                            </div>
-                            <div class="manga-info">
-                                <h3 class="manga-title">{{.Title}}</h3>
-                                <p class="manga-author">{{.Author}}</p>
-                            </div>
-                        </a>
-                    </div>
-                    {{end}}
-                </div>
-            </section>
-
-            <!-- All Mangas Section -->
-            <section class="section">
-                <div class="section-header">
-                    <h2 class="section-title">📖 Tous les Mangas</h2>
-                    <p class="section-subtitle">{{len .AllMangas}} mangas disponibles</p>
-                </div>
-                <div class="manga-grid all-grid">
-                    {{range .AllMangas}}
-                    <div class="manga-card">
-                        <a href="/manga/{{.ID}}" class="manga-link">
-                            <div class="manga-cover">
-                                <img src="{{.CoverURL}}" alt="{{.Title}}" loading="lazy">
-                                <div class="manga-overlay">
-                                    <div class="rating">⭐ {{.Rating}}</div>
-                                    <div class="genres">
-                                        {{range $index, $genre := .Genres}}
-                                            {{if lt $index 2}}<span class="genre-tag">{{$genre}}</span>{{end}}
-                                        {{end}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="manga-info">
-                                <h3 class="manga-title">{{.Title}}</h3>
-                                <p class="manga-author">{{.Author}}</p>
-                                <div class="manga-meta">
-                                    <span class="chapters">{{len .Chapters}} ch.</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    {{end}}
-                </div>
-            </section>
+            </a>
+            {{end}}
         </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Readmii. Fait avec ❤️ et Go</p>
-        </div>
-    </footer>
-
-    <script src="/static/js/app.js"></script>
+    </div>
 </body>
 </html>
