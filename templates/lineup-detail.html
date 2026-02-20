@@ -390,7 +390,7 @@
                     <div style="margin-top: 2rem;">
                         <h3 style="color: var(--success); margin-bottom: 1rem;">⚙️ Bind requis</h3>
                         <div class="bind-command">{{.Lineup.ActionDetails.BindCommand}}</div>
-                        <button class="copy-btn" onclick="copyBind()">📋 Copier la commande</button>
+                        <button class="copy-btn" data-bind-command="{{.Lineup.ActionDetails.BindCommand}}" onclick="copyBind()">📋 Copier la commande</button>
                     </div>
                     {{end}}
                 </section>
@@ -427,9 +427,9 @@
     
     <script>
         function copyBind() {
-            const bindText = `{{.Lineup.ActionDetails.BindCommand}}`;
+            const btn = document.querySelector('.copy-btn');
+            const bindText = btn.dataset.bindCommand;
             navigator.clipboard.writeText(bindText).then(() => {
-                const btn = document.querySelector('.copy-btn');
                 const originalText = btn.textContent;
                 btn.textContent = '✅ Copié !';
                 btn.style.background = '#36b36f';

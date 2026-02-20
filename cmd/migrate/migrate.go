@@ -31,11 +31,16 @@ func main() {
 
 	log.Println("✅ Connexion à la base de données réussie")
 
-	// Charger le fichier JSON
-	data, err := ioutil.ReadFile("/tmp/uploads/data.json")
-	if err != nil {
-		log.Fatal("Erreur lecture lineups.json:", err)
+	// Charger le fichier JSON (cherche seed_data.json à la racine, puis data.json local)
+	jsonPath := "seed_data.json"
+	if _, err := os.Stat(jsonPath); os.IsNotExist(err) {
+		jsonPath = "cmd/migrate/data.json"
 	}
+	data, err := ioutil.ReadFile(jsonPath)
+	if err != nil {
+		log.Fatalf("Erreur lecture %s: %v", jsonPath, err)
+	}
+	log.Printf("📄 Lecture depuis: %s\n", jsonPath)
 
 	var library Library
 	if err = json.Unmarshal(data, &library); err != nil {
