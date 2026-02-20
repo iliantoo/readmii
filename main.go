@@ -148,6 +148,61 @@ func getMapFromDB(mapID string) (*Map, error) {
 	return &m, nil
 }
 
+// Get lineup by ID from database
+func getLineupFromDB(lineupID string) (*Lineup, string, string, error) {
+	var l Lineup
+	var mapID, mapName string
+
+	err := db.QueryRow(`
+		SELECT l.id, l.title, l.description, l.grenade_type, l.side, l.difficulty,
+			l.throw_zone, l.landing_zone, l.action_type,
+			l.bind_required, l.bind_command, l.movement, l.click_type,
+			l.position_image, l.position_thumbnail, l.crosshair_image, l.crosshair_zoom_level,
+			l.demo_gif, l.demo_thumbnail,
+			l.popularity, l.views,
+			m.id, m.name
+		FROM lineups l
+		JOIN maps m ON l.map_id = m.id
+		WHERE l.id = $1
+	`, lineupID).Scan(
+		&l.ID, &l.Title, &l.Description, &l.GrenadeType, &l.Side, &l.Difficulty,
+		&l.ThrowZone, &l.LandingZone, &l.ActionType,
+		&l.ActionDetails.BindRequired, &l.ActionDetails.BindCommand,
+		&l.ActionDetails.Movement, &l.ActionDetails.ClickType,
+		&l.Media.PositionImage, &l.Media.PositionThumbnail,
+		&l.Media.CrosshairImage, &l.Media.CrosshairZoomLevel,
+		&l.Media.DemoGif, &l.Media.DemoThumbnail,
+		&l.Popularity, &l.Views,
+		&mapID, &mapName,
+	)
+
+	if err != nil {
+		return nil, "", "", err
+	}
+
+	// Charger les tags
+	tagRows, err := db.Query(`
+		SELECT t.name
+		FROM tags t
+		JOIN lineup_tags lt ON t.id = lt.tag_id
+		WHERE lt.lineup_id = $1
+	`, l.ID)
+
+	if err == nil {
+		var tags []string
+		for tagRows.Next() {
+			var tag string
+			if err := tagRows.Scan(&tag); err == nil {
+				tags = append(tags, tag)
+			}
+		}
+		tagRows.Close()
+		l.Tags = tags
+	}
+
+	return &l, mapID, mapName, nil
+}
+
 // Load library from JSON file
 func loadLibrary() error {
 	data, err := ioutil.ReadFile("lineups.json")
@@ -194,6 +249,27 @@ func getMapByID(id string) *Map {
 		}
 	}
 	return nil
+}
+
+func getLineupByID(lineupID string) (*Lineup, string, string) {
+	if useDatabase {
+		l, mapID, mapName, err := getLineupFromDB(lineupID)
+		if err != nil {
+			log.Printf("Erreur récupération lineup depuis DB: %v\n", err)
+			return nil, "", ""
+		}
+		return l, mapID, mapName
+	}
+
+	// Fallback sur JSON
+	for _, m := range library.Maps {
+		for i := range m.Lineups {
+			if m.Lineups[i].ID == lineupID {
+				return &m.Lineups[i], m.ID, m.Name
+			}
+		}
+	}
+	return nil, "", ""
 }
 
 func getAllMaps() []Map {
@@ -244,10 +320,37 @@ func mapViewHandler(w http.ResponseWriter, r *http.Request) {
 		PageTitle: mapData.Name + " - Lineups",
 	}
 
-	err := templates.ExecuteTemplate(w, "map-view.html", data)
+	err := templates.ExecuteTemplate(w, "map-detail.html", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
-		log.Println("Erreur template map-view:", err)
+		log.Println("Erreur template map-detail:", err)
+	}
+}
+
+func lineupDetailHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	lineupID := vars["id"]
+
+	lineup, mapID, mapName := getLineupByID(lineupID)
+	if lineup == nil {
+		http.NotFound(w, r)
+		return
+	}
+
+	data := struct {
+		Lineup  *Lineup
+		MapID   string
+		MapName string
+	}{
+		Lineup:  lineup,
+		MapID:   mapID,
+		MapName: mapName,
+	}
+
+	err := templates.ExecuteTemplate(w, "lineup-detail.html", data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Println("Erreur template lineup-detail:", err)
 	}
 }
 
@@ -274,6 +377,7 @@ func main() {
 	// Routes
 	r.HandleFunc("/", homeHandler).Methods("GET")
 	r.HandleFunc("/map/{id}", mapViewHandler).Methods("GET")
+	r.HandleFunc("/lineup/{id}", lineupDetailHandler).Methods("GET")
 
 	// Static files
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))

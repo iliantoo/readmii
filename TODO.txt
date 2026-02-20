@@ -1,0 +1,156 @@
+===============================================================================
+  📋 TODO QUOTIDIEN - CS2 Lineups
+===============================================================================
+
+PRIORITÉ HAUTE (Prochaines 48h)
+================================
+[ ] Tester le site localement sur http://localhost:8080
+[ ] Vérifier que tous les filtres fonctionnent (grenade, side, difficulté)
+[ ] Naviguer entre les 3 pages (home, map-detail, lineup-detail)
+
+SEMAINE 1 - Contenu réel (15-30 Jan)
+=====================================
+[ ] Capturer 3-5 lineups essentiels pour MIRAGE:
+    [ ] Smoke CT depuis spawn T
+    [ ] Smoke Jungle depuis T spawn
+    [ ] Flash A site depuis palace
+    [ ] Molotov bench depuis A ramp
+    [ ] Smoke sniper nest depuis mid
+    
+[ ] Pour chaque lineup, créer:
+    [ ] Screenshot position (1920x1080, < 500KB)
+    [ ] Screenshot crosshair zoomé (1920x1080, < 500KB)
+    [ ] GIF démo (1280x720, 3-5 sec, < 5MB)
+    [ ] Tester le bind en jeu
+    
+[ ] Renommer les fichiers selon convention:
+    mirage_smoke_01_position.png
+    mirage_smoke_01_crosshair.png
+    mirage_smoke_01_demo.gif
+
+[ ] Mettre les médias dans public/assets/lineups/
+
+[ ] Éditer seed_data.json avec vrais chemins d'images
+
+[ ] Réimporter: echo "Y" | DATABASE_URL="..." go run cmd/seed/seed.go
+
+[ ] Tester les nouveaux lineups sur le site
+
+SEMAINE 2 - Dust2 + Déploiement (30 Jan - 5 Fév)
+=================================================
+[ ] Capturer 5-8 lineups pour DUST2:
+    [ ] Smoke CT spawn depuis tunnels
+    [ ] Smoke catwalk depuis mid
+    [ ] Flash long A depuis pit
+    [ ] Molotov A site depuis catwalk
+    [ ] Smoke B site depuis upper tunnels
+    
+[ ] Optimiser toutes les images (compression)
+
+[ ] Créer compte Scalingo si pas déjà fait
+
+[ ] Déployer sur Scalingo:
+    [ ] scalingo create cs2-lineups-prod
+    [ ] scalingo -a cs2-lineups-prod addons-add postgresql
+    [ ] git push scalingo main
+    [ ] scalingo -a cs2-lineups-prod run bash
+    [ ] go run cmd/seed/seed.go (en production)
+    
+[ ] Tester le site en production
+
+[ ] Configurer nom de domaine personnalisé (optionnel)
+
+SEMAINE 3 - SEO + Marketing (5-12 Fév)
+=======================================
+[ ] Ajouter meta tags dans templates (title, description, og:image)
+
+[ ] Créer sitemap.xml
+
+[ ] Ajouter Google Analytics
+
+[ ] Créer robots.txt
+
+[ ] Partager sur Reddit r/GlobalOffensive et r/CounterStrikeStrats
+
+[ ] Poster sur Twitter/X avec hashtags #CS2 #CounterStrike
+
+[ ] Trouver 2-3 Discords CS2 francophones pour partager
+
+[ ] Contacter 1-2 streamers/YouTubeurs FR pour feedback
+
+SEMAINE 4 - Expansion contenu (12-19 Fév)
+==========================================
+[ ] Ajouter 5 lineups pour INFERNO
+
+[ ] Ajouter 5 lineups pour NUKE
+
+[ ] Compléter Ancient, Anubis, Vertigo (3 lineups chacun minimum)
+
+[ ] Atteindre 30-40 lineups de qualité au total
+
+[ ] Analyser Google Analytics pour voir pages populaires
+
+[ ] Ajuster contenu selon feedback utilisateurs
+
+LONG TERME (Fév-Mars)
+=====================
+[ ] Interface d'administration:
+    [ ] Formulaire ajout lineup
+    [ ] Upload d'images
+    [ ] Édition/suppression
+    [ ] Modération
+    
+[ ] Fonctionnalités avancées:
+    [ ] Système de recherche globale
+    [ ] Votes et commentaires
+    [ ] Partage social direct
+    [ ] Favoris utilisateurs
+    [ ] Toggle Dark/Light mode
+    
+[ ] Multi-langue:
+    [ ] Version anglaise
+    [ ] Version espagnole
+    
+[ ] API publique:
+    [ ] Endpoints REST (/api/v1/lineups)
+    [ ] Documentation API
+    [ ] Rate limiting
+
+BUGS À CORRIGER
+===============
+[ ] Avertissements CSS background-clip (mineur, pas urgent)
+
+NOTES
+=====
+- Base PostgreSQL: cs2_lineups, user: cs2user, pass: cs2password
+- Serveur local: DATABASE_URL="postgresql://cs2user:cs2password@localhost:5432/cs2_lineups?sslmode=disable" go run main.go models.go
+- Port: http://localhost:8080
+- Seed: DATABASE_URL="..." go run cmd/seed/seed.go
+
+SOURCES IMAGES/GIFS
+===================
+Option 1: Capturer soi-même en jeu (RECOMMANDÉ)
+Option 2: Map workshop avec lineups
+Option 3: YouTube (demander permission)
+Option 4: Créateurs de contenu (partnerships)
+Option 5: Community submissions
+
+⚠️ IMPORTANT: Jamais voler du contenu sans permission !
+
+COMMANDES UTILES
+================
+# Démarrer serveur
+DATABASE_URL="postgresql://cs2user:cs2user@localhost:5432/cs2_lineups?sslmode=disable" go run main.go models.go
+
+# Réimporter données
+echo "Y" | DATABASE_URL="..." go run cmd/seed/seed.go
+
+# Tester requête SQL
+psql -U cs2user -d cs2_lineups -c "SELECT COUNT(*) FROM lineups;"
+
+# Voir logs production
+scalingo -a cs2-lineups-prod logs -n 100
+
+===============================================================================
+  Dernière mise à jour: 15 janvier 2025
+===============================================================================

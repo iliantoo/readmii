@@ -1,0 +1,1579 @@
+{
+  "maps": [
+    {
+      "id": "mirage",
+      "name": "Mirage",
+      "display_name": "Mirage",
+      "cover_image": "/assets/maps/mirage.jpg",
+      "total_lineups": 12,
+      "lineups": [
+        {
+          "id": "mirage-a-ct-smoke-tspawn",
+          "title": "CT Smoke depuis T Spawn",
+          "description": "Smoke parfait pour bloquer la vision des CT en A depuis le spawn T. Idéal pour un rush ou un take contrôlé du site A.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "T Spawn",
+          "landing_zone": "A Site - CT",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/a-ct-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/a-ct-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/a-ct-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/a-ct-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/a-ct-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential", "Spawn Lineup"],
+          "popularity": 9.5,
+          "views": 15420
+        },
+        {
+          "id": "mirage-a-stairs-smoke-tspawn",
+          "title": "Smoke Stairs A depuis T Spawn",
+          "description": "Bloque complètement les stairs en A, permettant un plant safe ou un retake plus facile.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "T Spawn",
+          "landing_zone": "A Site - Stairs",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/a-stairs-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/a-stairs-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/a-stairs-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/a-stairs-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/a-stairs-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential"],
+          "popularity": 9.2,
+          "views": 13800
+        },
+        {
+          "id": "mirage-a-jungle-smoke-tspawn",
+          "title": "Jungle Smoke depuis T Spawn",
+          "description": "Smoke profond pour couper Jungle, empêchant les rotations rapides des CT.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "T Spawn",
+          "landing_zone": "A Site - Jungle",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/a-jungle-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/a-jungle-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/a-jungle-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/a-jungle-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/a-jungle-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Jungle"],
+          "popularity": 8.8,
+          "views": 11200
+        },
+        {
+          "id": "mirage-palace-flash-a-site",
+          "title": "Flash Palace Pop",
+          "description": "Flash aveuglant pour peek Palace depuis Ramp. Flash parfait pour un entry fragger.",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "A Ramp",
+          "landing_zone": "Palace",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "running",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/palace-flash-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/palace-flash-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/palace-flash-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/palace-flash-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/palace-flash-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Flash", "Entry", "Palace"],
+          "popularity": 9.0,
+          "views": 14500
+        },
+        {
+          "id": "mirage-b-short-molotov-mid",
+          "title": "Molotov B Short depuis Mid",
+          "description": "Molotov pour déloger un joueur en B Short ou B Apps, idéal pour un split B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Mid",
+          "landing_zone": "B Short",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/b-short-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/b-short-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/b-short-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/b-short-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/b-short-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Molotov", "Mid Control"],
+          "popularity": 7.8,
+          "views": 8900
+        },
+        {
+          "id": "mirage-window-smoke-tspawn",
+          "title": "Window Smoke depuis T Spawn",
+          "description": "Smoke pour bloquer Window en Mid, permettant une traversée safe vers A ou B.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "T Spawn",
+          "landing_zone": "Mid - Window",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/window-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/window-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/window-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/window-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/window-smoke-demo-thumb.jpg"
+          },
+          "tags": ["Mid", "Essential", "Default Setup"],
+          "popularity": 9.7,
+          "views": 18500
+        },
+        {
+          "id": "mirage-connector-smoke-adefault",
+          "title": "Connector Smoke depuis A Default",
+          "description": "Smoke défensif pour bloquer Connector lors d'un retake ou d'une défense du site A.",
+          "grenade_type": "smoke",
+          "side": "CT",
+          "difficulty": "easy",
+          "throw_zone": "A Site - Default",
+          "landing_zone": "Connector",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/connector-smoke-ct-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/connector-smoke-ct-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/connector-smoke-ct-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/connector-smoke-ct-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/connector-smoke-ct-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Retake", "CT Side"],
+          "popularity": 7.5,
+          "views": 7200
+        },
+        {
+          "id": "mirage-bench-molotov-apps",
+          "title": "Bench Molotov depuis B Apps",
+          "description": "Molotov pour nettoyer Bench en B, spot CT commun lors des rushes.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "B Apps",
+          "landing_zone": "B Site - Bench",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/bench-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/bench-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/bench-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/bench-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/bench-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 8.5,
+          "views": 10400
+        },
+        {
+          "id": "mirage-top-connector-flash",
+          "title": "Flash Top Connector",
+          "description": "Flash pour aveugler les joueurs en haut de Connector depuis Mid.",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Mid",
+          "landing_zone": "Top Connector",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "right-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/topcon-flash-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/topcon-flash-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/topcon-flash-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/topcon-flash-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/topcon-flash-demo-thumb.jpg"
+          },
+          "tags": ["Mid", "Flash", "Connector"],
+          "popularity": 6.8,
+          "views": 5800
+        },
+        {
+          "id": "mirage-market-molotov-kitchen",
+          "title": "Market Molotov depuis Kitchen",
+          "description": "Molotov de retake pour nettoyer Market depuis Kitchen.",
+          "grenade_type": "molotov",
+          "side": "CT",
+          "difficulty": "medium",
+          "throw_zone": "Kitchen",
+          "landing_zone": "B Site - Market",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/market-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/market-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/market-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/market-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/market-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Retake", "CT Side"],
+          "popularity": 7.2,
+          "views": 6400
+        },
+        {
+          "id": "mirage-undergrowth-smoke-palace",
+          "title": "Undergrowth Smoke depuis Palace",
+          "description": "Smoke one-way pour tenir Palace avec un avantage visuel.",
+          "grenade_type": "smoke",
+          "side": "CT",
+          "difficulty": "hard",
+          "throw_zone": "Palace",
+          "landing_zone": "Palace - Undergrowth",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "crouching",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/undergrowth-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/undergrowth-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/undergrowth-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/undergrowth-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/undergrowth-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "One-Way", "Advanced", "CT Side"],
+          "popularity": 6.5,
+          "views": 4200
+        },
+        {
+          "id": "mirage-ramp-he-palace",
+          "title": "HE Grenade Ramp vers Palace",
+          "description": "HE pour infliger des dégâts pré-emptifs aux joueurs qui rushent Palace.",
+          "grenade_type": "he",
+          "side": "CT",
+          "difficulty": "easy",
+          "throw_zone": "A Site - Ramp",
+          "landing_zone": "Palace Entry",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/mirage/ramp-he-position.jpg",
+            "position_thumbnail": "/assets/lineups/mirage/ramp-he-thumb.jpg",
+            "crosshair_image": "/assets/lineups/mirage/ramp-he-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/mirage/ramp-he-demo.gif",
+            "demo_thumbnail": "/assets/lineups/mirage/ramp-he-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Defense", "CT Side"],
+          "popularity": 5.8,
+          "views": 3100
+        }
+      ]
+    },
+    {
+      "id": "dust2",
+      "name": "Dust II",
+      "display_name": "Dust II",
+      "cover_image": "/assets/maps/dust2.jpg",
+      "total_lineups": 10,
+      "lineups": [
+        {
+          "id": "dust2-xbox-smoke-tspawn",
+          "title": "Xbox Smoke depuis T Spawn",
+          "description": "Le smoke le plus iconique de Dust2. Permet de traverser Mid en toute sécurité.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "T Spawn",
+          "landing_zone": "Mid - Xbox",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/xbox-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/xbox-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/xbox-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/xbox-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/xbox-smoke-demo-thumb.jpg"
+          },
+          "tags": ["Mid", "Essential", "Iconic", "Must Know"],
+          "popularity": 10.0,
+          "views": 25600
+        },
+        {
+          "id": "dust2-ct-smoke-longdoors",
+          "title": "CT Smoke Long depuis Long Doors",
+          "description": "Smoke pour bloquer la vision des CT en Long A, permettant une prise du site.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Long Doors",
+          "landing_zone": "Long A - CT Spawn",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/ct-long-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/ct-long-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/ct-long-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/ct-long-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/ct-long-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Long", "Essential"],
+          "popularity": 9.3,
+          "views": 17800
+        },
+        {
+          "id": "dust2-a-site-flash-long",
+          "title": "Flash A Site depuis Long",
+          "description": "Flash pop pour aveugler les défenseurs sur le site A.",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Long A",
+          "landing_zone": "A Site",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "running",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/asite-flash-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/asite-flash-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/asite-flash-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/asite-flash-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/asite-flash-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Flash", "Entry"],
+          "popularity": 8.7,
+          "views": 13200
+        },
+        {
+          "id": "dust2-b-doors-molotov",
+          "title": "B Doors Molotov depuis Upper Tunns",
+          "description": "Molotov pour forcer les CT à abandonner leur position aux portes B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Upper Tunnels",
+          "landing_zone": "B Doors",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/bdoors-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/bdoors-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/bdoors-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/bdoors-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/bdoors-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 9.1,
+          "views": 16500
+        },
+        {
+          "id": "dust2-catwalk-smoke-ct",
+          "title": "Catwalk Smoke depuis CT Spawn",
+          "description": "Smoke défensif pour bloquer Catwalk lors d'un retake B.",
+          "grenade_type": "smoke",
+          "side": "CT",
+          "difficulty": "medium",
+          "throw_zone": "CT Spawn",
+          "landing_zone": "B Site - Catwalk",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/catwalk-smoke-ct-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/catwalk-smoke-ct-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/catwalk-smoke-ct-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/catwalk-smoke-ct-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/catwalk-smoke-ct-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Retake", "CT Side"],
+          "popularity": 7.9,
+          "views": 8700
+        },
+        {
+          "id": "dust2-corner-molotov-tunnels",
+          "title": "Back Plat Molotov depuis Tunnels",
+          "description": "Molotov post-plant pour sécuriser la bombe en B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "B Tunnels",
+          "landing_zone": "B Site - Back Plat",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "right-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/backplat-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/backplat-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/backplat-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/backplat-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/backplat-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Post-Plant", "Defense"],
+          "popularity": 8.3,
+          "views": 10200
+        },
+        {
+          "id": "dust2-long-corner-smoke",
+          "title": "Long Corner Smoke",
+          "description": "Smoke pour bloquer l'angle du long corner, sécurisant le passage.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Outside Long",
+          "landing_zone": "Long A - Corner",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/long-corner-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/long-corner-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/long-corner-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/long-corner-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/long-corner-smoke-demo-thumb.jpg"
+          },
+          "tags": ["Long", "Control", "Essential"],
+          "popularity": 8.5,
+          "views": 11800
+        },
+        {
+          "id": "dust2-short-flash-catwalk",
+          "title": "Short Flash depuis Catwalk",
+          "description": "Flash pour aveugler les joueurs qui montent Short vers B.",
+          "grenade_type": "flash",
+          "side": "CT",
+          "difficulty": "easy",
+          "throw_zone": "B Site - Catwalk",
+          "landing_zone": "Short",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/short-flash-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/short-flash-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/short-flash-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/short-flash-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/short-flash-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Defense", "CT Side"],
+          "popularity": 7.1,
+          "views": 6300
+        },
+        {
+          "id": "dust2-a-site-he-platform",
+          "title": "HE Grenade A Platform",
+          "description": "HE pour infliger des dégâts aux joueurs plantant sur la plateforme A.",
+          "grenade_type": "he",
+          "side": "CT",
+          "difficulty": "medium",
+          "throw_zone": "CT Spawn",
+          "landing_zone": "A Site - Platform",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/aplatform-he-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/aplatform-he-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/aplatform-he-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/aplatform-he-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/aplatform-he-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Post-Plant", "CT Side"],
+          "popularity": 6.8,
+          "views": 5100
+        },
+        {
+          "id": "dust2-mid-lower-smoke",
+          "title": "Lower Mid Smoke",
+          "description": "Smoke pour bloquer Lower Tunnels depuis Mid, empêchant les rotations.",
+          "grenade_type": "smoke",
+          "side": "CT",
+          "difficulty": "medium",
+          "throw_zone": "Mid Doors",
+          "landing_zone": "Lower Tunnels",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/dust2/lower-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/dust2/lower-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/dust2/lower-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/dust2/lower-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/dust2/lower-smoke-demo-thumb.jpg"
+          },
+          "tags": ["Mid", "Control", "CT Side"],
+          "popularity": 6.5,
+          "views": 4800
+        }
+      ]
+    },
+    {
+      "id": "inferno",
+      "name": "Inferno",
+      "display_name": "Inferno",
+      "cover_image": "/assets/maps/inferno.jpg",
+      "total_lineups": 8,
+      "lineups": [
+        {
+          "id": "inferno-ct-smoke-banana",
+          "title": "CT Smoke Banana depuis T Spawn",
+          "description": "Smoke CT en Banana pour bloquer la rotation rapide des CT.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "T Spawn",
+          "landing_zone": "Banana - CT",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/inferno/ct-banana-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/inferno/ct-banana-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/inferno/ct-banana-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/inferno/ct-banana-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/inferno/ct-banana-smoke-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Banana", "Essential"],
+          "popularity": 9.0,
+          "views": 14200
+        },
+        {
+          "id": "inferno-coffins-smoke-banana",
+          "title": "Coffins Smoke depuis Banana",
+          "description": "Smoke des Coffins pour sécuriser l'entrée B.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Banana",
+          "landing_zone": "B Site - Coffins",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/inferno/coffins-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/inferno/coffins-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/inferno/coffins-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/inferno/coffins-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/inferno/coffins-smoke-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 8.8,
+          "views": 12100
+        },
+        {
+          "id": "inferno-library-smoke-appartments",
+          "title": "Library Smoke depuis Apps",
+          "description": "Smoke profond de la Library pour un take A sécurisé.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Apartments",
+          "landing_zone": "A Site - Library",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/inferno/library-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/inferno/library-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/inferno/library-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/inferno/library-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/inferno/library-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential"],
+          "popularity": 8.5,
+          "views": 10900
+        },
+        {
+          "id": "inferno-pit-molotov-arch",
+          "title": "Pit Molotov depuis Arch",
+          "description": "Molotov pour déloger les joueurs campant Pit.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Arch Side",
+          "landing_zone": "A Site - Pit",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "right-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/inferno/pit-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/inferno/pit-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/inferno/pit-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/inferno/pit-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/inferno/pit-molotov-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Clear", "Essential"],
+          "popularity": 9.2,
+          "views": 15400
+        },
+        {
+          "id": "inferno-balcony-flash-apps",
+          "title": "Balcony Flash depuis Apps",
+          "description": "Flash pour aveugler les défenseurs sur le balcon.",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Apartments",
+          "landing_zone": "Balcony",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "walking",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/inferno/balcony-flash-position.jpg",
+            "position_thumbnail": "/assets/lineups/inferno/balcony-flash-thumb.jpg",
+            "crosshair_image": "/assets/lineups/inferno/balcony-flash-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/inferno/balcony-flash-demo.gif",
+            "demo_thumbnail": "/assets/lineups/inferno/balcony-flash-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Flash", "Entry"],
+          "popularity": 7.8,
+          "views": 8600
+        },
+        {
+          "id": "inferno-grill-molotov-banana",
+          "title": "Grill Molotov depuis Top Banana",
+          "description": "Molotov pour nettoyer Grill lors d'un rush B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Top Banana",
+          "landing_zone": "B Site - Grill",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/inferno/grill-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/inferno/grill-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/inferno/grill-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/inferno/grill-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/inferno/grill-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 8.6,
+          "views": 11300
+        },
+        {
+          "id": "inferno-spools-molotov-ct",
+          "title": "Spools Molotov depuis CT",
+          "description": "Molotov de retake pour nettoyer Spools en B.",
+          "grenade_type": "molotov",
+          "side": "CT",
+          "difficulty": "medium",
+          "throw_zone": "CT Spawn",
+          "landing_zone": "B Site - Spools",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/inferno/spools-molotov-ct-position.jpg",
+            "position_thumbnail": "/assets/lineups/inferno/spools-molotov-ct-thumb.jpg",
+            "crosshair_image": "/assets/lineups/inferno/spools-molotov-ct-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/inferno/spools-molotov-ct-demo.gif",
+            "demo_thumbnail": "/assets/lineups/inferno/spools-molotov-ct-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Retake", "CT Side"],
+          "popularity": 7.3,
+          "views": 6800
+        },
+        {
+          "id": "inferno-truck-smoke-arch",
+          "title": "Truck Smoke depuis Arch",
+          "description": "Smoke du truck pour bloquer les rotations CT en A.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Arch Side",
+          "landing_zone": "A Site - Truck",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/inferno/truck-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/inferno/truck-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/inferno/truck-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/inferno/truck-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/inferno/truck-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Control"],
+          "popularity": 7.9,
+          "views": 9200
+        }
+      ]
+    },
+    {
+      "id": "nuke",
+      "name": "Nuke",
+      "display_name": "Nuke",
+      "cover_image": "/assets/maps/nuke.jpg",
+      "total_lineups": 6,
+      "lineups": [
+        {
+          "id": "nuke-heaven-smoke-outside",
+          "title": "Heaven Smoke depuis Outside",
+          "description": "Smoke pour bloquer Heaven lors d'un take A.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Outside",
+          "landing_zone": "A Site - Heaven",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/nuke/heaven-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/nuke/heaven-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/nuke/heaven-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/nuke/heaven-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/nuke/heaven-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential"],
+          "popularity": 8.7,
+          "views": 11900
+        },
+        {
+          "id": "nuke-squeaky-flash-lobby",
+          "title": "Squeaky Flash depuis Lobby",
+          "description": "Flash pour aveugler les défenseurs de Squeaky.",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Lobby",
+          "landing_zone": "Squeaky Door",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "running",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/nuke/squeaky-flash-position.jpg",
+            "position_thumbnail": "/assets/lineups/nuke/squeaky-flash-thumb.jpg",
+            "crosshair_image": "/assets/lineups/nuke/squeaky-flash-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/nuke/squeaky-flash-demo.gif",
+            "demo_thumbnail": "/assets/lineups/nuke/squeaky-flash-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Flash", "Entry"],
+          "popularity": 7.5,
+          "views": 7400
+        },
+        {
+          "id": "nuke-ramp-smoke-outside",
+          "title": "Ramp Smoke depuis Outside",
+          "description": "Smoke pour bloquer Ramp lors d'un execute sur A.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Outside",
+          "landing_zone": "Ramp",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/nuke/ramp-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/nuke/ramp-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/nuke/ramp-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/nuke/ramp-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/nuke/ramp-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Ramp"],
+          "popularity": 8.2,
+          "views": 9600
+        },
+        {
+          "id": "nuke-trophy-molotov-secret",
+          "title": "Trophy Molotov depuis Secret",
+          "description": "Molotov pour nettoyer Trophy room lors d'un rush B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Secret",
+          "landing_zone": "B Site - Trophy",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/nuke/trophy-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/nuke/trophy-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/nuke/trophy-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/nuke/trophy-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/nuke/trophy-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 7.9,
+          "views": 8800
+        },
+        {
+          "id": "nuke-rafters-smoke-outside",
+          "title": "Rafters Smoke depuis Outside",
+          "description": "Smoke pour bloquer Rafters et sécuriser le plant en A.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "hard",
+          "throw_zone": "Outside",
+          "landing_zone": "A Site - Rafters",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/nuke/rafters-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/nuke/rafters-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/nuke/rafters-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/nuke/rafters-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/nuke/rafters-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Advanced"],
+          "popularity": 6.8,
+          "views": 5200
+        },
+        {
+          "id": "nuke-headshot-molotov-lobby",
+          "title": "Headshot Molotov depuis Lobby",
+          "description": "Molotov pour nettoyer le Headshot box en A.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Lobby",
+          "landing_zone": "A Site - Headshot",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "right-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/nuke/headshot-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/nuke/headshot-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/nuke/headshot-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/nuke/headshot-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/nuke/headshot-molotov-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Clear", "Essential"],
+          "popularity": 8.1,
+          "views": 9400
+        }
+      ]
+    },
+    {
+      "id": "ancient",
+      "name": "Ancient",
+      "display_name": "Ancient",
+      "cover_image": "/assets/maps/ancient.jpg",
+      "total_lineups": 6,
+      "lineups": [
+        {
+          "id": "ancient-donut-smoke-mid",
+          "title": "Donut Smoke depuis Mid",
+          "description": "Smoke du Donut pour bloquer la vision des CT en A.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Mid",
+          "landing_zone": "A Site - Donut",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/ancient/donut-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/ancient/donut-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/ancient/donut-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/ancient/donut-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/ancient/donut-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential"],
+          "popularity": 8.4,
+          "views": 10600
+        },
+        {
+          "id": "ancient-cave-molotov-bhouse",
+          "title": "Cave Molotov depuis B House",
+          "description": "Molotov pour déloger les joueurs en Cave lors d'un take B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "B House",
+          "landing_zone": "B Site - Cave",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/ancient/cave-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/ancient/cave-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/ancient/cave-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/ancient/cave-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/ancient/cave-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 8.8,
+          "views": 12300
+        },
+        {
+          "id": "ancient-elbow-flash-mid",
+          "title": "Elbow Flash depuis Mid",
+          "description": "Flash pour aveugler les joueurs à Elbow.",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Mid",
+          "landing_zone": "Elbow",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "running",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/ancient/elbow-flash-position.jpg",
+            "position_thumbnail": "/assets/lineups/ancient/elbow-flash-thumb.jpg",
+            "crosshair_image": "/assets/lineups/ancient/elbow-flash-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/ancient/elbow-flash-demo.gif",
+            "demo_thumbnail": "/assets/lineups/ancient/elbow-flash-demo-thumb.jpg"
+          },
+          "tags": ["Mid", "Flash", "Control"],
+          "popularity": 7.2,
+          "views": 6700
+        },
+        {
+          "id": "ancient-heaven-smoke-tspawn",
+          "title": "Heaven Smoke depuis T Spawn",
+          "description": "Smoke profond pour bloquer Heaven en A.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "T Spawn",
+          "landing_zone": "A Site - Heaven",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/ancient/heaven-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/ancient/heaven-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/ancient/heaven-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/ancient/heaven-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/ancient/heaven-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential"],
+          "popularity": 8.6,
+          "views": 11400
+        },
+        {
+          "id": "ancient-temple-molotov-bhouse",
+          "title": "Temple Molotov depuis B House",
+          "description": "Molotov pour nettoyer Temple en B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "B House",
+          "landing_zone": "B Site - Temple",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "right-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/ancient/temple-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/ancient/temple-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/ancient/temple-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/ancient/temple-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/ancient/temple-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 8.3,
+          "views": 10100
+        },
+        {
+          "id": "ancient-long-smoke-tspawn",
+          "title": "Long A Smoke depuis T Spawn",
+          "description": "Smoke pour bloquer Long A et sécuriser l'avancée.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "T Spawn",
+          "landing_zone": "Long A",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/ancient/long-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/ancient/long-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/ancient/long-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/ancient/long-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/ancient/long-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Long", "Control"],
+          "popularity": 7.9,
+          "views": 8900
+        }
+      ]
+    },
+    {
+      "id": "anubis",
+      "name": "Anubis",
+      "display_name": "Anubis",
+      "cover_image": "/assets/maps/anubis.jpg",
+      "total_lineups": 6,
+      "lineups": [
+        {
+          "id": "anubis-heaven-smoke-mid",
+          "title": "Heaven Smoke depuis Mid",
+          "description": "Smoke pour bloquer Heaven lors d'un take A.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Mid",
+          "landing_zone": "A Site - Heaven",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/anubis/heaven-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/anubis/heaven-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/anubis/heaven-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/anubis/heaven-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/anubis/heaven-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential"],
+          "popularity": 8.2,
+          "views": 9800
+        },
+        {
+          "id": "anubis-connector-molotov-canal",
+          "title": "Connector Molotov depuis Canal",
+          "description": "Molotov pour nettoyer Connector lors d'un push B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Canal",
+          "landing_zone": "B Connector",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/anubis/connector-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/anubis/connector-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/anubis/connector-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/anubis/connector-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/anubis/connector-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 8.5,
+          "views": 10800
+        },
+        {
+          "id": "anubis-palace-flash-mid",
+          "title": "Palace Flash depuis Mid",
+          "description": "Flash pour aveugler les défenseurs en Palace.",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Mid",
+          "landing_zone": "Palace",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "running",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/anubis/palace-flash-position.jpg",
+            "position_thumbnail": "/assets/lineups/anubis/palace-flash-thumb.jpg",
+            "crosshair_image": "/assets/lineups/anubis/palace-flash-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/anubis/palace-flash-demo.gif",
+            "demo_thumbnail": "/assets/lineups/anubis/palace-flash-demo-thumb.jpg"
+          },
+          "tags": ["Mid", "Flash", "Entry"],
+          "popularity": 7.4,
+          "views": 7100
+        },
+        {
+          "id": "anubis-default-smoke-main",
+          "title": "Default Smoke depuis Main",
+          "description": "Smoke pour bloquer le site A depuis Main.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "A Main",
+          "landing_zone": "A Site - Default",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/anubis/default-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/anubis/default-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/anubis/default-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/anubis/default-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/anubis/default-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential"],
+          "popularity": 8.0,
+          "views": 9100
+        },
+        {
+          "id": "anubis-water-molotov-canal",
+          "title": "Water Molotov depuis Canal",
+          "description": "Molotov pour nettoyer Water lors d'un execute B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Canal",
+          "landing_zone": "B Site - Water",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "right-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/anubis/water-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/anubis/water-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/anubis/water-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/anubis/water-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/anubis/water-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 8.1,
+          "views": 9500
+        },
+        {
+          "id": "anubis-bridge-smoke-tspawn",
+          "title": "Bridge Smoke depuis T Spawn",
+          "description": "Smoke pour bloquer Bridge et sécuriser l'avancée Mid.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "T Spawn",
+          "landing_zone": "Mid - Bridge",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/anubis/bridge-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/anubis/bridge-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/anubis/bridge-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/anubis/bridge-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/anubis/bridge-smoke-demo-thumb.jpg"
+          },
+          "tags": ["Mid", "Control", "Essential"],
+          "popularity": 7.8,
+          "views": 8400
+        }
+      ]
+    },
+    {
+      "id": "vertigo",
+      "name": "Vertigo",
+      "display_name": "Vertigo",
+      "cover_image": "/assets/maps/vertigo.jpg",
+      "total_lineups": 6,
+      "lineups": [
+        {
+          "id": "vertigo-ct-smoke-mid",
+          "title": "CT Smoke depuis Mid",
+          "description": "Smoke pour bloquer CT en A lors d'un execute.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Mid",
+          "landing_zone": "A Site - CT",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/vertigo/ct-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/vertigo/ct-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/vertigo/ct-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/vertigo/ct-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/vertigo/ct-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential"],
+          "popularity": 8.3,
+          "views": 10200
+        },
+        {
+          "id": "vertigo-headshot-molotov-ramp",
+          "title": "Headshot Molotov depuis Ramp",
+          "description": "Molotov pour déloger les joueurs à Headshot en B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "B Ramp",
+          "landing_zone": "B Site - Headshot",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/vertigo/headshot-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/vertigo/headshot-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/vertigo/headshot-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/vertigo/headshot-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/vertigo/headshot-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 8.6,
+          "views": 11600
+        },
+        {
+          "id": "vertigo-ramp-flash-tstairs",
+          "title": "Ramp Flash depuis T Stairs",
+          "description": "Flash pour aveugler les défenseurs de Ramp.",
+          "grenade_type": "flash",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "T Stairs",
+          "landing_zone": "A Ramp",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "running",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/vertigo/ramp-flash-position.jpg",
+            "position_thumbnail": "/assets/lineups/vertigo/ramp-flash-thumb.jpg",
+            "crosshair_image": "/assets/lineups/vertigo/ramp-flash-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/vertigo/ramp-flash-demo.gif",
+            "demo_thumbnail": "/assets/lineups/vertigo/ramp-flash-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Flash", "Entry"],
+          "popularity": 7.6,
+          "views": 7900
+        },
+        {
+          "id": "vertigo-default-smoke-mid",
+          "title": "Default Smoke depuis Mid",
+          "description": "Smoke du Default pour sécuriser le plant en A.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "easy",
+          "throw_zone": "Mid",
+          "landing_zone": "A Site - Default",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/vertigo/default-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/vertigo/default-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/vertigo/default-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/vertigo/default-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/vertigo/default-smoke-demo-thumb.jpg"
+          },
+          "tags": ["A Site", "Execute", "Essential"],
+          "popularity": 8.1,
+          "views": 9300
+        },
+        {
+          "id": "vertigo-sandbags-molotov-mid",
+          "title": "Sandbags Molotov depuis Mid",
+          "description": "Molotov pour nettoyer Sandbags en B.",
+          "grenade_type": "molotov",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "Mid",
+          "landing_zone": "B Site - Sandbags",
+          "action_type": "throw",
+          "action_details": {
+            "bind_required": false,
+            "bind_command": "",
+            "movement": "standing",
+            "click_type": "right-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/vertigo/sandbags-molotov-position.jpg",
+            "position_thumbnail": "/assets/lineups/vertigo/sandbags-molotov-thumb.jpg",
+            "crosshair_image": "/assets/lineups/vertigo/sandbags-molotov-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/vertigo/sandbags-molotov-demo.gif",
+            "demo_thumbnail": "/assets/lineups/vertigo/sandbags-molotov-demo-thumb.jpg"
+          },
+          "tags": ["B Site", "Execute", "Essential"],
+          "popularity": 7.9,
+          "views": 8700
+        },
+        {
+          "id": "vertigo-elevator-smoke-tspawn",
+          "title": "Elevator Smoke depuis T Spawn",
+          "description": "Smoke pour bloquer Elevator et contrôler Mid.",
+          "grenade_type": "smoke",
+          "side": "T",
+          "difficulty": "medium",
+          "throw_zone": "T Spawn",
+          "landing_zone": "Mid - Elevator",
+          "action_type": "jumpthrow",
+          "action_details": {
+            "bind_required": true,
+            "bind_command": "alias \"+jumpthrow\" \"+jump;-attack\"; alias \"-jumpthrow\" \"-jump\"; bind \"x\" \"+jumpthrow\"",
+            "movement": "standing",
+            "click_type": "left-click"
+          },
+          "media": {
+            "position_image": "/assets/lineups/vertigo/elevator-smoke-position.jpg",
+            "position_thumbnail": "/assets/lineups/vertigo/elevator-smoke-thumb.jpg",
+            "crosshair_image": "/assets/lineups/vertigo/elevator-smoke-crosshair.jpg",
+            "crosshair_zoom_level": "default",
+            "demo_gif": "/assets/lineups/vertigo/elevator-smoke-demo.gif",
+            "demo_thumbnail": "/assets/lineups/vertigo/elevator-smoke-demo-thumb.jpg"
+          },
+          "tags": ["Mid", "Control", "Essential"],
+          "popularity": 7.7,
+          "views": 8200
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Map.DisplayName}} - CS2 Lineups</title>
+    <style>
+        :root {
+            --primary: #ff6b35;
+            --secondary: #4a9eff;
+            --bg-dark: #0a0e1a;
+            --bg-card: #12172b;
+            --text-primary: #ffffff;
+            --text-secondary: #a8b2d1;
+            --success: #44dd88;
+            --smoke: #b8b8b8;
+            --flash: #f0e68c;
+            --molotov: #ff6347;
+            --he: #87ceeb;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0f1629 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(18, 23, 43, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        
+        .breadcrumb {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        .map-header {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(74, 158, 255, 0.1));
+            padding: 3rem 0 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .map-header h1 {
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .map-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1.5rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Filters */
+        .filters-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .filters-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        .filter-btn.grenade-smoke.active { background: var(--smoke); color: #000; }
+        .filter-btn.grenade-flash.active { background: var(--flash); color: #000; }
+        .filter-btn.grenade-molotov.active { background: var(--molotov); color: white; }
+        .filter-btn.grenade-he.active { background: var(--he); color: #000; }
+        
+        /* Lineups Grid */
+        .lineups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .lineup-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .lineup-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(255, 107, 53, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .lineup-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a2137, #0a0e1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+        
+        .grenade-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+        
+        .grenade-smoke { background: rgba(184, 184, 184, 0.9); color: #000; }
+        .grenade-flash { background: rgba(240, 230, 140, 0.9); color: #000; }
+        .grenade-molotov { background: rgba(255, 99, 71, 0.9); color: white; }
+        .grenade-he { background: rgba(135, 206, 235, 0.9); color: #000; }
+        
+        .side-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+        
+        .side-T { background: rgba(255, 107, 53, 0.9); color: white; }
+        .side-CT { background: rgba(74, 158, 255, 0.9); color: white; }
+        
+        .lineup-content {
+            padding: 1.5rem;
+        }
+        
+        .lineup-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+        
+        .lineup-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .lineup-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .difficulty {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .difficulty.easy { color: var(--success); }
+        .difficulty.medium { color: var(--flash); }
+        .difficulty.hard { color: var(--molotov); }
+        
+        .views {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .map-header h1 {
+                font-size: 2rem;
+            }
+            
+            .map-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .lineups-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">CS2 LINEUPS</a>
+            <div class="breadcrumb">
+                <a href="/">🏠 Home</a> / <span>{{.Map.DisplayName}}</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Map Header -->
+    <header class="map-header">
+        <div class="container">
+            <h1>{{.Map.DisplayName}}</h1>
+            <div class="map-stats">
+                <div class="stat">
+                    <div class="stat-number">{{len .Map.Lineups}}</div>
+                    <div class="stat-label">Lineups totaux</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="filtered-count">{{len .Map.Lineups}}</div>
+                    <div class="stat-label">Affichés</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Filters -->
+        <section class="filters-section">
+            <h2 class="filters-title">🔍 Filtres</h2>
+            
+            <div class="filter-group">
+                <span class="filter-label">Type de grenade</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="grenade" data-value="all">Tous</button>
+                    <button class="filter-btn grenade-smoke" data-filter="grenade" data-value="smoke">💨 Smoke</button>
+                    <button class="filter-btn grenade-flash" data-filter="grenade" data-value="flash">⚡ Flash</button>
+                    <button class="filter-btn grenade-molotov" data-filter="grenade" data-value="molotov">🔥 Molotov</button>
+                    <button class="filter-btn grenade-he" data-filter="grenade" data-value="he">💣 HE</button>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <span class="filter-label">Camp</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="side" data-value="all">Tous</button>
+                    <button class="filter-btn" data-filter="side" data-value="T">T Side</button>
+                    <button class="filter-btn" data-filter="side" data-value="CT">CT Side</button>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <span class="filter-label">Difficulté</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="difficulty" data-value="all">Toutes</button>
+                    <button class="filter-btn" data-filter="difficulty" data-value="easy">✅ Facile</button>
+                    <button class="filter-btn" data-filter="difficulty" data-value="medium">⚠️ Moyen</button>
+                    <button class="filter-btn" data-filter="difficulty" data-value="hard">❌ Difficile</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Lineups Grid -->
+        <div class="lineups-grid" id="lineups-grid">
+            {{range .Map.Lineups}}
+            <div class="lineup-card" 
+                 data-grenade="{{.GrenadeType}}" 
+                 data-side="{{.Side}}" 
+                 data-difficulty="{{.Difficulty}}"
+                 onclick="window.location.href='/lineup/{{.ID}}'">
+                <div class="lineup-image">
+                    <span class="grenade-badge grenade-{{.GrenadeType}}">
+                        {{if eq .GrenadeType "smoke"}}💨 Smoke{{end}}
+                        {{if eq .GrenadeType "flash"}}⚡ Flash{{end}}
+                        {{if eq .GrenadeType "molotov"}}🔥 Molotov{{end}}
+                        {{if eq .GrenadeType "he"}}💣 HE{{end}}
+                    </span>
+                    <span class="side-badge side-{{.Side}}">{{.Side}}</span>
+                    🎯
+                </div>
+                <div class="lineup-content">
+                    <h3 class="lineup-title">{{.Title}}</h3>
+                    <p class="lineup-description">{{.Description}}</p>
+                    <div class="lineup-meta">
+                        <span class="difficulty {{.Difficulty}}">
+                            {{if eq .Difficulty "easy"}}✅{{end}}
+                            {{if eq .Difficulty "medium"}}⚠️{{end}}
+                            {{if eq .Difficulty "hard"}}❌{{end}}
+                            {{.Difficulty}}
+                        </span>
+                        <span class="views">👁️ {{.Views}} vues</span>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        
+        <div class="no-results" id="no-results" style="display: none;">
+            Aucun lineup ne correspond aux filtres sélectionnés.
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 CS2 Lineups - Tous droits réservés</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Filter functionality
+        const filters = {
+            grenade: 'all',
+            side: 'all',
+            difficulty: 'all'
+        };
+        
+        function applyFilters() {
+            const cards = document.querySelectorAll('.lineup-card');
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const grenade = card.dataset.grenade;
+                const side = card.dataset.side;
+                const difficulty = card.dataset.difficulty;
+                
+                const matchGrenade = filters.grenade === 'all' || grenade === filters.grenade;
+                const matchSide = filters.side === 'all' || side === filters.side;
+                const matchDifficulty = filters.difficulty === 'all' || difficulty === filters.difficulty;
+                
+                if (matchGrenade && matchSide && matchDifficulty) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('filtered-count').textContent = visibleCount;
+            document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        
+        // Add click handlers to filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filterType = this.dataset.filter;
+                const filterValue = this.dataset.value;
+                
+                // Remove active class from siblings
+                this.parentElement.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Update filter
+                filters[filterType] = filterValue;
+                
+                // Apply filters
+                applyFilters();
+            });
+        });
+    </script>
+</body>
+</html>

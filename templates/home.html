@@ -3,74 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.PageTitle}}</title>
+    <title>{{.PageTitle}} - CS2 Lineups</title>
+    <link rel="stylesheet" href="/static/css/style.css">
     <style>
+        :root {
+            --primary: #ff6b35;
+            --secondary: #4a9eff;
+            --bg-dark: #0a0e1a;
+            --bg-card: #12172b;
+            --bg-card-hover: #1a2137;
+            --text-primary: #ffffff;
+            --text-secondary: #a8b2d1;
+            --success: #44dd88;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Arial', sans-serif;
-            background: #0a0e1a;
-            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0f1629 100%);
+            color: var(--text-primary);
             min-height: 100vh;
-            padding: 2rem;
         }
         
-        .container { max-width: 1400px; margin: 0 auto; }
-        
-        .hero {
-            text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 3rem;
+        /* Navbar */
+        .navbar {
+            background: rgba(18, 23, 43, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        .hero h1 {
-            font-size: 3rem;
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ff6b35, #4a9eff);
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            background: radial-gradient(circle at top, rgba(255, 107, 53, 0.05), transparent 70%);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            text-transform: uppercase;
         }
         
         .hero p {
-            font-size: 1.2rem;
-            color: #a8b2d1;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Map Grid */
+        .section-title {
+            font-size: 2rem;
+            margin: 3rem 0 2rem;
+            text-align: center;
+            color: var(--text-primary);
         }
         
         .map-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
+            margin-bottom: 4rem;
         }
         
         .map-card {
-            background: #12172b;
-            border-radius: 12px;
+            background: var(--bg-card);
+            border-radius: 16px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
             display: block;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .map-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
         }
         
         .map-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(255, 107, 53, 0.4);
+            border-color: var(--primary);
+        }
+        
+        .map-card:hover::before {
+            opacity: 0.05;
         }
         
         .map-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             background: linear-gradient(135deg, #1a2137, #0a0e1a);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .map-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(68, 221, 136, 0.2);
+            color: var(--success);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
         }
         
         .map-info {
             padding: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
         
         .map-name {
@@ -78,32 +213,114 @@
             font-weight: bold;
             letter-spacing: 2px;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
         
         .map-count {
-            color: #44dd88;
+            color: var(--success);
             font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .map-count::before {
+            content: '📍';
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .map-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>COUNTER-STRIKE 2 LINEUPS</h1>
-            <p>Maîtrisez vos utilitaires avec des lineups précis</p>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">CS2 LINEUPS</a>
+            <ul class="nav-links">
+                <li><a href="/">Maps</a></li>
+                <li><a href="#" id="themeToggle">🌙 Theme</a></li>
+            </ul>
         </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Counter-Strike 2 Lineups</h1>
+            <p>Maîtrisez vos utilitaires avec des lineups précis et stratégiques</p>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Maps</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">54</div>
+                    <div class="stat-label">Lineups</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Grenades</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Maps Grid -->
+    <main class="container">
+        <h2 class="section-title">🗺️ Mappool Compétitif</h2>
         
         <div class="map-grid">
             {{range .Maps}}
             <a href="/map/{{.ID}}" class="map-card">
-                <div class="map-image">🗺️</div>
+                <div class="map-image">
+                    <span class="map-badge">{{.TotalLineups}} lineups</span>
+                    🗺️
+                </div>
                 <div class="map-info">
                     <div class="map-name">{{.DisplayName}}</div>
-                    <div class="map-count">{{.TotalLineups}} lineups</div>
+                    <div class="map-count">{{.TotalLineups}} lineups disponibles</div>
                 </div>
             </a>
             {{end}}
         </div>
-    </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 CS2 Lineups - Tous droits réservés</p>
+        </div>
+    </footer>
+    
+    <script src="/static/js/app.js"></script>
 </body>
 </html>
