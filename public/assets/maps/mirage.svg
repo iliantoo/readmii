@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c8a97e"/>
+      <stop offset="100%" style="stop-color:#4a2e10"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="220" fill="url(#g)"/>
+  <rect width="600" height="220" fill="url(#grid)"/>
+  <polygon points="300,30 450,180 150,180" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  <polygon points="300,60 420,170 180,170" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <circle cx="300" cy="110" r="40" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <text x="300" y="125" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="rgba(255,255,255,0.9)" letter-spacing="6">MIRAGE</text>
+  <text x="300" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.5)" letter-spacing="3">DE_MIRAGE</text>
+</svg>

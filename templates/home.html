@@ -29,7 +29,7 @@
         
         /* Navbar */
         .navbar {
-            background: rgba(255, 54, 54, 0.95);
+            background: rgba(32, 47, 93, 0.95);
             backdrop-filter: blur(10px);
             padding: 1.5rem 0;
             border-bottom: 1px solid rgba(255, 107, 53, 0.1);
@@ -187,7 +187,47 @@
             font-size: 5rem;
             position: relative;
             z-index: 1;
+            overflow: hidden;
         }
+        
+        .map-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.4s ease;
+        }
+        
+        .map-card:hover .map-image img {
+            transform: scale(1.08);
+        }
+        
+        .map-image img + .map-emoji {
+            display: none;
+        }
+        
+        .map-image .map-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+            z-index: 2;
+        }
+        
+        .map-image .map-badge {
+            z-index: 3;
+        }
+        
+        /* Fallback gradients par map */
+        .map-fallback-mirage    { background: linear-gradient(135deg, #c8a97e, #7a5c3a); }
+        .map-fallback-dust2     { background: linear-gradient(135deg, #d4a96a, #8b6914); }
+        .map-fallback-inferno   { background: linear-gradient(135deg, #e07b3a, #7a2e10); }
+        .map-fallback-nuke      { background: linear-gradient(135deg, #5a8a6a, #2a4a3a); }
+        .map-fallback-ancient   { background: linear-gradient(135deg, #7a9a6a, #3a5a2a); }
+        .map-fallback-anubis    { background: linear-gradient(135deg, #c8a050, #6a4a10); }
+        .map-fallback-vertigo   { background: linear-gradient(135deg, #4a7aaa, #1a3a6a); }
         
         .map-badge {
             position: absolute;
@@ -301,9 +341,14 @@
         <div class="map-grid">
             {{range .Maps}}
             <a href="/map/{{.ID}}" class="map-card">
-                <div class="map-image">
+                <div class="map-image map-fallback-{{.ID}}">
+                    <img
+                        src="/assets/maps/{{.ID}}.svg"
+                        alt="{{.DisplayName}}"
+                        onerror="this.remove()"
+                    >
+                    <div class="map-overlay"></div>
                     <span class="map-badge">{{.TotalLineups}} lineups</span>
-                    🗺️
                 </div>
                 <div class="map-info">
                     <div class="map-name">{{.DisplayName}}</div>
