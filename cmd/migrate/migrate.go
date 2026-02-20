@@ -32,7 +32,7 @@ func main() {
 	log.Println("✅ Connexion à la base de données réussie")
 
 	// Charger le fichier JSON
-	data, err := ioutil.ReadFile("data.json")
+	data, err := ioutil.ReadFile("/tmp/uploads/data.json")
 	if err != nil {
 		log.Fatal("Erreur lecture lineups.json:", err)
 	}
