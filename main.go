@@ -205,7 +205,7 @@ func getLineupFromDB(lineupID string) (*Lineup, string, string, error) {
 
 // Load library from JSON file
 func loadLibrary() error {
-	data, err := ioutil.ReadFile("lineups.json")
+	data, err := ioutil.ReadFile("seed_data.json")
 	if err != nil {
 		return err
 	}
@@ -364,7 +364,7 @@ func main() {
 	// Load data from JSON as fallback
 	if !useDatabase {
 		if err := loadLibrary(); err != nil {
-			log.Fatal("❌ Erreur de chargement de lineups.json:", err)
+			log.Fatal("❌ Erreur de chargement de seed_data.json:", err)
 		}
 	}
 
